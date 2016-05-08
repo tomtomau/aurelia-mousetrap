@@ -2,6 +2,14 @@
 
 This plugin is integrates [mousetrap.js](https://github.com/ccampbell/mousetrap) and [Aurelia](http://aurelia.io/) by dispatching messages through the [Event Aggregator](https://github.com/aurelia/event-aggregator). The keymap and callback are both configurable.
 
+It also provides three custom attributes:
+
+* mousetrap-focus
+* mousetrap-blur
+* mousetrap-click
+
+Which allow you to bind the published event names into DOM events, see below.
+
 ## Using the plugin
 
 Install the plugin and configure the plugin in `main.js`
@@ -19,6 +27,34 @@ Install the plugin and configure the plugin in `main.js`
 ```
 
 The example keymap above will bind the `/` key to publish an event named `KS_SEARCH` on press, and `n` to send `KS_NEW`. You can name the events however you please but the key combination should be the same spec as [Mousetrap](https://craig.is/killing/mice) library.
+
+## Custom Attributes
+
+Custom attributes allow you to simply make the connection between the event which is published via the EventAggregator and UI/DOM events.
+
+### mousetrap-focus
+
+When the event is published, it focuses on the element
+
+```
+<input type="text" mousetrap-focus="KS_SEARCH">
+```
+
+### mousetrap-blur
+
+When the event is published, it blurs the element
+
+```
+<input type="text" mousetrap-blur="KS_BLUR">
+```
+
+### mousetrap-click
+
+When the event is published, it clicks on the element
+
+```
+<a class="btn btn-primary" mousetrap-click="KS_NEW">
+```
 
 ## Custom callback
 
