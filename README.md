@@ -1,11 +1,35 @@
-# aurelia-skeleton-plugin
+# aurelia-mousetrap
 
-[![ZenHub](https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png)](https://zenhub.io)
-[![Join the chat at https://gitter.im/aurelia/discuss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aurelia/discuss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+This plugin is integrates [mousetrap.js](https://github.com/ccampbell/mousetrap) and [Aurelia](http://aurelia.io/) by dispatching messages through the [Event Aggregator](https://github.com/aurelia/event-aggregator). The keymap and callback are both configurable.
 
-This skeleton is part of the [Aurelia](http://www.aurelia.io/) platform. It sets up a standard aurelia plugin using gulp to build your ES6 code with the Babel compiler. Karma/Jasmine testing is also configured.
+## Using the plugin
 
-> To keep up to date on [Aurelia](http://www.aurelia.io/), please visit and subscribe to [the official blog](http://blog.durandal.io/) and [our email list](http://durandal.us10.list-manage1.com/subscribe?u=dae7661a3872ee02b519f6f29&id=3de6801ccc). We also invite you to [follow us on twitter](https://twitter.com/aureliaeffect). If you have questions, please [join our community on Gitter](https://gitter.im/aurelia/discuss). If you would like to have deeper insight into our development process, please install the [ZenHub](https://zenhub.io) Chrome or Firefox Extension and visit any of our repository's boards. You can get an overview of all Aurelia work by visiting [the framework board](https://github.com/aurelia/framework#boards).
+Install the plugin and configure the plugin in `main.js`
+
+`$ jspm install aurelia-mousetrap`
+
+```
+.plugin('aurelia-mousetrap', config => {
+	// Example keymap
+	config.set('keymap', {
+		"/": "KS_SEARCH",
+		"n": "KS_NEW"
+	});
+})
+```
+
+The example keymap above will bind the `/` key to publish an event named `KS_SEARCH` on press, and `n` to send `KS_NEW`. You can name the events however you please but the key combination should be the same spec as [Mousetrap](https://craig.is/killing/mice) library.
+
+## Custom callback
+
+You can specify a custom callback with the configuration as well:
+
+```
+config.set('callback', eventName => {
+	// Do something with the eventName! 
+});
+```
+
 
 ## Building The Code
 
@@ -56,3 +80,7 @@ To run the unit tests, first ensure that you have followed the steps above in or
   ```shell
   karma start
   ```
+
+## Contributing
+
+Source code is located in `src/index.js`. To build the source, run `gulp build`. Please follow [Aurelia/Durandal Contribution Guidelines](https://github.com/DurandalProject/about/blob/master/CONTRIBUTING.md#type) where possible through the use of GitHub pull requests.
