@@ -6,7 +6,7 @@ This plugin is integrates [mousetrap.js](https://github.com/ccampbell/mousetrap)
 
 Install the plugin and configure the plugin in `main.js`
 
-`$ jspm install aurelia-mousetrap`
+`$ jspm install npm:aurelia-mousetrap`
 
 ```
 .plugin('aurelia-mousetrap', config => {
