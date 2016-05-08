@@ -1,11 +1,21 @@
-define(['exports'], function (exports) {
+define(['exports', './configure', './mousetrap-config'], function (exports, _configure, _mousetrapConfig) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
   exports.configure = configure;
-  function configure(config) {
-    config.globalResources('./hello-world');
+  function configure(aurelia, configCallback) {
+    var instance = aurelia.container.get(_configure.Configure);
+
+    if (configCallback !== undefined && typeof configCallback === 'function') {
+      configCallback(instance);
+    }
+
+    var mousetrapConfig = aurelia.container.get(_mousetrapConfig.MousetrapConfig);
+
+    mousetrapConfig.bindKeymap(instance.get('keymap'));
+
+    aurelia.globalResources(['./mousetrap-click', './mousetrap-focus', './mousetrap-blur']);
   }
 });
