@@ -62,7 +62,8 @@
     },
     "dependencies": {
       "aurelia-event-aggregator": "^1.0.0-beta.1.2.0",
-      "aurelia-framework": "^1.0.0-beta.1.2.2"
+      "aurelia-framework": "^1.0.0-beta.1.2.2",
+      "mousetrap": "1.5.3"
     },
     "devDependencies": {
       "aurelia-polyfills": "^1.0.0-beta.1.1.0"
