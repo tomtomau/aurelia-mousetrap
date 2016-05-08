@@ -9,8 +9,7 @@ export function configure(aurelia, configCallback) {
   }
 
   let mousetrapConfig = aurelia.container.get(MousetrapConfig);
-
-  mousetrapConfig.bindKeymap(instance.get('keymap'));
+  mousetrapConfig.bindKeymap();
 
   aurelia.globalResources(['./mousetrap-click', './mousetrap-focus', './mousetrap-blur']);
 }

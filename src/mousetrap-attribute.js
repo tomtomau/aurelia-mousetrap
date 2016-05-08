@@ -29,7 +29,7 @@ export class AbstractMousetrapAttribute {
     }
 
     /**
-     * This method needs to b
+     * This method needs to be implemented by subclasses
      * @param element
      */
     static act(element) {

@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['mousetrap', 'aurelia-framework', 'aurelia-event-aggregator'], function (_export, _context) {
-    var Mousetrap, inject, EventAggregator, _createClass, _dec, _class, MousetrapConfig;
+System.register(['mousetrap', 'aurelia-framework', 'aurelia-event-aggregator', './configure'], function (_export, _context) {
+    var Mousetrap, inject, EventAggregator, Configure, _typeof, _createClass, _dec, _class, MousetrapConfig;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -16,8 +16,16 @@ System.register(['mousetrap', 'aurelia-framework', 'aurelia-event-aggregator'], 
             inject = _aureliaFramework.inject;
         }, function (_aureliaEventAggregator) {
             EventAggregator = _aureliaEventAggregator.EventAggregator;
+        }, function (_configure) {
+            Configure = _configure.Configure;
         }],
         execute: function () {
+            _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+                return typeof obj;
+            } : function (obj) {
+                return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+            };
+
             _createClass = function () {
                 function defineProperties(target, props) {
                     for (var i = 0; i < props.length; i++) {
@@ -36,37 +44,42 @@ System.register(['mousetrap', 'aurelia-framework', 'aurelia-event-aggregator'], 
                 };
             }();
 
-            _export('MousetrapConfig', MousetrapConfig = (_dec = inject(EventAggregator), _dec(_class = function () {
-                function MousetrapConfig(eventAggregator) {
+            _export('MousetrapConfig', MousetrapConfig = (_dec = inject(Configure, EventAggregator), _dec(_class = function () {
+                function MousetrapConfig(configure, eventAggregator) {
                     _classCallCheck(this, MousetrapConfig);
 
                     this._keymap = {};
+                    this._callback = null;
 
-                    Object.assign(this, { eventAggregator: eventAggregator });
-                }
-
-                MousetrapConfig.prototype.bindKeymap = function bindKeymap(keymap) {
-                    if (typeof keymap === 'undefined') {
-                        keymap = {};
+                    if (_typeof(configure.get('keymap')) === 'object') {
+                        this._keymap = configure.get('keymap');
                     }
 
-                    this._keymap = keymap;
+                    if (typeof configure.get('callback') === 'function') {
+                        this._callback = configure.get('callback');
+                    } else {
+                        this._callback = function (eventName) {
+                            eventAggregator.publish(eventName);
+                        };
+                    }
+                }
+
+                MousetrapConfig.prototype.bindKeymap = function bindKeymap() {
+                    var _this = this;
+
+                    var keymap = this._keymap;
 
                     for (var combo in keymap) {
                         if (keymap.hasOwnProperty(combo)) {
-                            var eventName = keymap[combo];
+                            (function () {
+                                var eventName = keymap[combo];
 
-                            Mousetrap.bind(combo, this.createAureliaEvent(eventName));
+                                Mousetrap.bind(combo, function () {
+                                    _this._callback(eventName);
+                                });
+                            })();
                         }
                     }
-                };
-
-                MousetrapConfig.prototype.createAureliaEvent = function createAureliaEvent(eventName) {
-                    var ea = this.eventAggregator;
-
-                    return function () {
-                        ea.publish(eventName);
-                    };
                 };
 
                 _createClass(MousetrapConfig, [{

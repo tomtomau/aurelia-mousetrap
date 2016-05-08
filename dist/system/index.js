@@ -17,8 +17,7 @@ System.register(['./configure', './mousetrap-config'], function (_export, _conte
         }
 
         var mousetrapConfig = aurelia.container.get(MousetrapConfig);
-
-        mousetrapConfig.bindKeymap(instance.get('keymap'));
+        mousetrapConfig.bindKeymap();
 
         aurelia.globalResources(['./mousetrap-click', './mousetrap-focus', './mousetrap-blur']);
       }
