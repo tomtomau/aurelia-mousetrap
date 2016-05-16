@@ -1,6 +1,6 @@
 {
   "name": "aurelia-mousetrap",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "An Aurelia plugin that bridges Mousetrap.js and autowires EventAggregator",
   "keywords": [
     "aurelia",
