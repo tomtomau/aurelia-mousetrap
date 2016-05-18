@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-framework', 'aurelia-event-aggregator'], function (_export, _context) {
+    "use strict";
+
     var TaskQueue, EventAggregator, _class, _temp, AbstractMousetrapAttribute;
 
     function _classCallCheck(instance, Constructor) {

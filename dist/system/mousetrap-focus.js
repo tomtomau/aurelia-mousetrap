@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-framework', 'aurelia-event-aggregator', './mousetrap-attribute'], function (_export, _context) {
+    "use strict";
+
     var inject, TaskQueue, EventAggregator, AbstractMousetrapAttribute, MousetrapFocusCustomAttribute;
 
     function _classCallCheck(instance, Constructor) {
@@ -51,12 +53,6 @@ System.register(['aurelia-framework', 'aurelia-event-aggregator', './mousetrap-a
 
                     return _possibleConstructorReturn(this, _AbstractMousetrapAtt.apply(this, arguments));
                 }
-
-                MousetrapFocusCustomAttribute.prototype.attached = function attached() {
-                    if (!this.element.classList.contains('mousetrap')) {
-                        this.element.classList.add('mousetrap');
-                    }
-                };
 
                 MousetrapFocusCustomAttribute.act = function act(element) {
                     element.focus();

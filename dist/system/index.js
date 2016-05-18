@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['./configure', './mousetrap-config'], function (_export, _context) {
+  "use strict";
+
   var Configure, MousetrapConfig;
   return {
     setters: [function (_configure) {

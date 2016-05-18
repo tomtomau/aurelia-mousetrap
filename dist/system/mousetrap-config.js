@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['mousetrap', 'aurelia-framework', 'aurelia-event-aggregator', './configure'], function (_export, _context) {
+    "use strict";
+
     var Mousetrap, inject, EventAggregator, Configure, _typeof, _createClass, _dec, _class, MousetrapConfig;
 
     function _classCallCheck(instance, Constructor) {

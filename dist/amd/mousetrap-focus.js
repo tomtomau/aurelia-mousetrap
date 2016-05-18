@@ -45,12 +45,6 @@ define(['exports', 'aurelia-framework', 'aurelia-event-aggregator', './mousetrap
             return _possibleConstructorReturn(this, _AbstractMousetrapAtt.apply(this, arguments));
         }
 
-        MousetrapFocusCustomAttribute.prototype.attached = function attached() {
-            if (!this.element.classList.contains('mousetrap')) {
-                this.element.classList.add('mousetrap');
-            }
-        };
-
         MousetrapFocusCustomAttribute.act = function act(element) {
             element.focus();
         };

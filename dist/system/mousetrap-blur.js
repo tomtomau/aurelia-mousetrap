@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-framework', 'aurelia-event-aggregator', './mousetrap-attribute'], function (_export, _context) {
+    "use strict";
+
     var inject, TaskQueue, EventAggregator, AbstractMousetrapAttribute, MousetrapBlurCustomAttribute;
 
     function _classCallCheck(instance, Constructor) {
