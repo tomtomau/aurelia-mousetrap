@@ -42,8 +42,8 @@ export class MousetrapConfig {
             if (keymap.hasOwnProperty(combo)) {
                 let eventName = keymap[combo];
 
-                Mousetrap.bind(combo, () => {
-                    this._callback(eventName);
+                Mousetrap.bind(combo, ($event) => {
+                    this._callback(eventName, $event);
                 });
             }
         }
